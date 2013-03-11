@@ -5,6 +5,6 @@ end
 
 desc "Build the docco documentation"
 task :doc do
-  sh "docco underscore.js"
+  sh "docco -l linear underscore.js"
 end
 
