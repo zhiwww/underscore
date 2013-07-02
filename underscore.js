@@ -581,6 +581,24 @@
 
     return range;
   };
+  
+  //Compare arrays, without considering the order of items.
+  _.same = function(array) {
+    if(arguments.length <= 1) { return true; }
+    var length = null;
+    var arrs = _.filter(arguments, function(arr){
+      if(!_.isArray(arr) || length !== null && arr.length !== length) {
+        return false;
+      }
+      length = arr.length;
+      return true;
+    });
+    
+    if(arrs.length !== arguments.length) { return false; }
+    
+    var inter = _.intersection.apply(null, arrs);
+    return inter.length === length;
+  }
 
   // Function (ahem) Functions
   // ------------------
